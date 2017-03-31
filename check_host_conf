@@ -1,0 +1,16 @@
+#!/bin/bash
+#
+# DATE: 31-03-2017
+# 
+# Sample script to verify the 'cfg_file'
+
+if [ -f /etc/nagios3/conf.d/jarvis.cfg ]; then
+ echo " OK - jarvis.cfg, config file are present "
+ exit 0
+else 
+ echo " CRITICAL - jarvis.cfg, config files are missing "
+ exit 2
+fi
+
+
+
