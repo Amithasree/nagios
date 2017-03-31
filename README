@@ -1,6 +1,5 @@
 nagios is system and network monitoring application ( open source tool ).
 
-
 What is it (Nagios) for:
 
 1. It watches hosts, which includes Local or Personal workstation and Remote hosts, which are sitting and running 1000 miles away from your location ( probably servers in data centers ).
