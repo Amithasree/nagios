@@ -1,0 +1,95 @@
+1. You can write your plugins to meet you business needs ( write your plugins by using shell or perl ).
+
+Things to remember when writing your OWN plugins ( either shell or perl )
+
+Exit codes:
+
+0  -  OK
+1  -  WARNING
+2  -  CRITICAL
+3  -  UNKNOWN
+
+if [ "exit code" = "0" ]; then
+ echo " Nagios will return OK & GREEN in Nagios Web-Interface page "
+elif [ "exit code" = "1" ]; then
+ echo " Nagios will return WARNING & YELLOW in Nagios Web-Interface Page "
+elif [ "exit code" = "2" ]; then
+ echo " Nagios will return CRITICAL & RED in Nagios Web-Interface Page "
+elif [ "exit code" = "3" ]; then
+ echo " Nagios will return UNKNOWN in Nagios Web-Interface Page "
+fi
+
+
+2. After writing your own plugins, please do verify by compiling your cfg file to see any syntax erros.
+
+
+##################################################################################################################
+
+root@personalworkstation:/etc/nagios3# /usr/sbin/nagios3 -v /etc/nagios3/nagios.cfg 
+
+Nagios Core 3.5.1
+Copyright (c) 2009-2011 Nagios Core Development Team and Community Contributors
+Copyright (c) 1999-2009 Ethan Galstad
+Last Modified: 08-30-2013
+License: GPL
+
+Website: http://www.nagios.org
+Reading configuration data...
+   Read main config file okay...
+Processing object config file '/etc/nagios3/commands.cfg'...
+Processing object config file '/etc/nagios3/conf.d/jarvis.cfg'...
+Processing object config file '/etc/nagios3/conf.d/ironman.cfg'...
+   Read object config files okay...
+
+Running pre-flight check on configuration data...
+
+Checking services...
+	Checked 15 services.
+Checking hosts...
+	Checked 3 hosts.
+Checking host groups...
+	Checked 4 host groups.
+Checking service groups...
+	Checked 0 service groups.
+Checking contacts...
+	Checked 1 contacts.
+Checking contact groups...
+	Checked 1 contact groups.
+Checking service escalations...
+	Checked 0 service escalations.
+Checking service dependencies...
+	Checked 0 service dependencies.
+Checking host escalations...
+	Checked 0 host escalations.
+Checking host dependencies...
+	Checked 0 host dependencies.
+Checking commands...
+	Checked 160 commands.
+Checking time periods...
+	Checked 4 time periods.
+Checking for circular paths between hosts...
+Checking for circular host and service dependencies...
+Checking global event handlers...
+Checking obsessive compulsive processor commands...
+Checking misc settings...
+
+Total Warnings: 0
+Total Errors:   0
+
+Things look okay - No serious problems were detected during the pre-flight check
+
+##################################################################################################################
+
+
+3. If you see Total Warnings & Total Errors is equal to 0, you can do a restart of stop and start nagios to update the new plugins and config changes.
+
+
+Nagios Config files: BUILDING BLOCKS OF NAGIOS
+
+1. Main Configuration File (nagios.cfg)
+2. Object Defination File ( commands.cfg, contacts.cfg, jarvis.cfg)
+3. CGI Configuration File ( cgi.cfg )
+4. Resource File ( resource.cfg )
+
+
+
