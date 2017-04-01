@@ -1,0 +1,45 @@
+Monitoring Remote Server
+
+Monitor your business critical applications running on remote servers.
+
+Required:
+
+1. NRPE installed on the remote machine, which you would like to monitor
+
+2. Active Tcp/Ip 
+
+
+Start Monitoring:
+
+1. Here i installed docker in my source machine, and i started a container with Ubuntu with NRPE installed.
+
+2. Edit your nrpe.cfg file where ( allowed hosts = 'your remote machine ip, or you can specify ip - address / subnet)
+
+3. Add your own plugins which you would like to monitor on the remote server 
+
+
+
+Things will help you troubleshoot:
+
+1. Nagios will listen to port 5666
+
+2. Make sure you have added your remote machine IP to your nrpe.cfg
+
+3. perform check_nrpe -H $HOSTADDRESS$ to verify, the monitor server is connecting to remote server or not.
+
+root@personalworkstation:~/nagios# /usr/lib/nagios/plugins/check_nrpe -H <valid ip where NRPE is configured>
+NRPE v2.15
+root@personalworkstation:~/nagios# /usr/lib/nagios/plugins/check_nrpe -H <invalid ip where NRPE is not configured>
+connect to address 172.17.0.3 port 5666: No route to host
+connect to host 172.17.0.3 port 5666: No route to host
+
+4. Make use of proper Macros's in command.cfg in nagios monotorm server
+
+5. If you see any errors like below
+
+root@personalworkstation:/etc/nagios3# /usr/lib/nagios/plugins/check_nrpe -H <valid ip, NRPE configured> -c check_host_ssh_service
+CHECK_NRPE: Error - Could not complete SSL handshake. 
+
+   ----> modify your nrpe.cfg to allow remote server ip for handshake
+
+
