@@ -92,4 +92,6 @@ Nagios Config files: BUILDING BLOCKS OF NAGIOS
 4. Resource File ( resource.cfg )
 
 
+# help ubuntu documentation
 
+https://help.ubuntu.com/lts/serverguide/nagios.html
